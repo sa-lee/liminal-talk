@@ -16,23 +16,23 @@
  *    - remarkjs wiki: https://github.com/gnab/remark/wiki
  *
  * ------------------------------------------------------- */
-@import url(https://fonts.googleapis.com/css?family=Montserrat:300,300i);
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300i);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 @import url(https://fonts.googleapis.com/css?family=Fira+Mono);
 
 
 body {
-  font-family: Montserrat, 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif;
+  font-family: Open Sans, 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif;
   font-weight: 300;
-  color: #484878;
+  color: #00CFFF;
 }
 h1, h2, h3 {
-  font-family: Josefin Sans;
+  font-family: Montserrat;
   font-weight: normal;
-  color: #484878;
+  color: #00CFFF;
 }
 .remark-slide-content {
-  background-color: #ECECF1;
+  background-color: #fff4dc;
   font-size: 30px;
   
   
@@ -56,19 +56,18 @@ h1, h2, h3 {
 }
 .remark-inline-code {
   font-size: 1em;
-  color: #f0a800;
+  color: #E3A1B8;
   
   
 }
 .remark-slide-number {
-  color: #484878;
+  color: #125972;
   opacity: 1;
   font-size: 0.7em;
 }
-/*strong{color:#F7D37F;}*/
-strong{color:#f0a800;}
+strong{color:#D98594;}
 a, a > code {
-  color: #609048;
+  color: #E7C99E;
   text-decoration: none;
 }
 .footnote {
@@ -79,21 +78,21 @@ a, a > code {
   font-size: 0.5em;
 }
 .remark-code-line-highlighted {
-  background-color: #FBE9BF;
+  background-color: #E7C99E;
 }
 .inverse {
-  background-color: #484878;
-  color: #ECECF1;
+  background-color: #F2E4DA;
+  color: #86C2DA;
   
 }
 .inverse h1, .inverse h2, .inverse h3 {
-  color: #ECECF1;
+  color: #86C2DA;
 }
 .title-slide, .title-slide h1, .title-slide h2, .title-slide h3 {
-  color: #ECECF1;
+  color: #86C2DA;
 }
 .title-slide {
-  background-color: #484878;
+  background-color: #F2E4DA;
   
   
   
@@ -133,7 +132,7 @@ img, video, iframe {
   max-width: 100%;
 }
 blockquote {
-  border-left: solid 5px #f0a800;
+  border-left: solid 5px #fdf4ac;
   padding-left: 1em;
 }
 .remark-slide table {
@@ -145,11 +144,11 @@ blockquote {
 th, td { padding: 5px; }
 .remark-slide thead, .remark-slide tfoot, .remark-slide tr:nth-child(even) { background: #eee }
 table.dataTable tbody {
-  background-color: #ECECF1;
-  color: #484878;
+  background-color: #fff4dc;
+  color: #00CFFF;
 }
 table.dataTable.display tbody tr.odd {
-  background-color: #ECECF1;
+  background-color: #fff4dc;
 }
 table.dataTable.display tbody tr.even {
   background-color: #eee;
@@ -158,10 +157,10 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
-  color: #484878;
+  color: #00CFFF;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-  color: #484878 !important;
+  color: #00CFFF !important;
 }
 
 @page { margin: 0; }

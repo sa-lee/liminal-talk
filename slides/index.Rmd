@@ -1,12 +1,12 @@
 ---
-title: 'Awesome title'
-subtitle: "subtitle"  
-author: "<span style = 'font-size: 90%;'>Nicholas Tierney, Monash University</span>"
-date: "<span style = 'font-size: 90%;'>CONFERENCE <br><br> MONDAY 1st January, 1920 </span> <br><br> `r #icon::fa('link')` [LINK]() <br><br>`r #icon::fa('twitter')` [nj_tierney](https://twitter.com/nj_tierney)"
+title: 'Casting Multiple Shadows'
+subtitle: "high-dimensional interactive data visualisation with tours and embeddings"  
+author: "<span style = 'font-size: 90%;'>Stuart Lee, Monash University</span>"
+date: "<span style = 'font-size: 90%;'>Final Review<br><br> Tuesday 10th March, 2020 </span> <br><br>"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: [njtheme.css, extra.css, animate.css]
+    css: [saltheme.css, extra.css, animate.css]
     nature:
       ratio: "16:9"
       titleSlideClass: ["left", "middle", "inverse"]
@@ -16,7 +16,7 @@ output:
 ---
 
 layout: true
-<div class="my-footer"><span>bit.ly/LINK • @nj_tierney</span></div> 
+<div class="my-footer"><span>bit.ly/LINK • @sa-lee</span></div> 
 
 ```{r setup, include=FALSE}
 # options(htmltools.dir.version = FALSE, width = 120)
@@ -41,15 +41,10 @@ knitr::opts_chunk$set(
 ```
 
 ```{r library, include = FALSE}
-library(tidyverse)
-library(visdat)
-library(naniar)
-library(gganimate)
-library(knitr)
-library(ggrepel)
+library(vegawidget)
+library(htmltools)
+library(liminal)
 ```
-
-
 
 ```{r helpers, include=FALSE}
 mp4_vid <- function(src){
@@ -67,28 +62,19 @@ fig.fullsize <- c(fig.height = 3.5, fig.width = 8, out.width = "150%"
 
 as_table <- function(...) knitr::kable(..., format='html', digits = 3)
 
-theme_set(
-  theme_grey(base_size = 16) +
-  theme(
-    legend.position = "bottom",
-    plot.background = element_rect(fill = "transparent"),
-    legend.background = element_rect(fill = "transparent")
-  )
-)
-
 # **ni**ck's **pa**lette
-nipa <- list(red = "#c03018",
-             orange = "#f0a800",
-             green = "#609048",
-             purple = "#484878",
-             light_purple = "#A3A3BB",
-             light_green = "#AFC7A3",
-             light_orange = "#F7D37F",
-             light_red = "#DF978B",
-             pale_purple = "#ECECF1",
-             pale_green = "#D7E3D1",
-             pale_orange = "#FBE9BF",
-             pale_red = "#EFCBC4")
+slpal <- list(red = "#d51d5e",
+             orange = "#ffc358",
+             blue = "#00CFFF",
+             tan = "#D0C1AA",
+             light_blue = "#C0DDE1",
+             light_tan = "#F2E4DA",
+             light_orange = "#fdf4ac",
+             light_red = "#D98594",
+             pale_blue = "#86C2DA",
+             pale_tan = "#fff4dc",
+             pale_orange = "#E7C99E",
+             pale_red = "#E3A1B8")
 
 ```
 
@@ -162,11 +148,10 @@ Put More slides here.
 .large[
 - Slides made using [xaringan](https://github.com/yihui/xaringan)
 - Extended with [xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
-- Colours taken + modified from [lorikeet theme from ochRe](https://github.com/ropenscilabs/ochRe)
-- Header font is **Josefin Sans**
-- Body text font is **Montserrat**
+- Colours taken + modified from [Kiki's Delivery Service](https://github.com/ewenme/ghibli)
+- Header font is **Montserrat**
+- Body text font is **Open Sans**
 - Code font is **Fira Mono**
-- template available: [njtierney/njt-talks](github.com/njtierney/njt-talks)
 ]
 
 ---
@@ -174,16 +159,9 @@ Put More slides here.
 # Learning more
 
 .large[
-`r icon::fa_box_open() ` [package link]()
+`r icon::fa_box_open() ` [liminal]()
 
 `r icon::fa('link')` [talk link]()
-
-`r icon::fa_twitter()` nj_tierney
-
-`r icon::fa_github()` njtierney
-
-`r icon::fa_paper_plane()` nicholas.tierney@gmail.com
-
 ]
 
 

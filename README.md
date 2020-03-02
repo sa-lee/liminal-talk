@@ -1,10 +1,6 @@
-# 
-Stuart Lee - presubmission seminar
+# Casting multiple shadows: high-dimensional interactive data visualisation with tours and embeddings 
 
-
-
-
-This is a slide template I have put on github so that I can get started with talks easier.
+## Stuart Lee - presubmission seminar
 
 # Abstract
 
@@ -15,7 +11,6 @@ the NLDR view may be misleading. We display several case
 studies on real datasets, that shows our approach is useful for
 cluster orientation tasks. 
 The implementation of our framework is available as an R package called `liminal` available at https://github.com/sa-lee/liminal.
-
 
 
 # Slide available [here](https://bit.ly/FILL-ME-IN)
@@ -40,6 +35,3 @@ The implementation of our framework is available as an R package called `liminal
   - Header font is **Josefin Sans**
   - Body text font is **Montserrat**
   - Code font is **Fira Mono**
-
-# Bio
-
