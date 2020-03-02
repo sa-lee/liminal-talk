@@ -78,6 +78,19 @@ slpal <- list(red = "#d51d5e",
 
 ```
 
+<!--
+talk outline
+- review of phd thus far
+- the problem
+- review of embedding algorithms, interactive graphics, tours
+- technology
+- design
+- examples/benchmarks
+  - Kevin moon
+  - quick draw
+- future work
+-->
+
 ---
 class: inverse, middle, center
 
