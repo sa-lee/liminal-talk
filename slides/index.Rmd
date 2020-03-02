@@ -127,31 +127,17 @@ Put More slides here.
 
 ---
 
-# Thanks
+# Acknowledgements
 
 .large.pull-left[
-- So many great people
-- So many great people
-- So many great people
-- So many great people
+- Di Cook
+- Matt Ritchie
+- Paul Harrison
 ]
 
 .large.pull-right[
-- So many great people
-- So many great people
-- So many great people
-- So many great people
-]
-
----
-
-# Resources
-
-.large[
-- So many things
-- So many things
-- So many things
-- So many things
+- Ursula Laa
+- Nick Tierney
 ]
 
 ---
@@ -172,7 +158,7 @@ Put More slides here.
 # Learning more
 
 .large[
-`r icon::fa_box_open() ` [liminal]()
+`r icon::fa_box_open() ` [liminal](https://github.com/sa-lee/liminal)
 
 `r icon::fa('link')` [talk link]()
 ]
