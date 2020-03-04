@@ -41,6 +41,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r library, include = FALSE}
+library(knitr)
 library(vegawidget)
 library(htmltools)
 library(liminal)
@@ -78,123 +79,231 @@ slpal <- list(red = "#d51d5e",
 
 ```
 
-<!--
-talk outline
-- review of phd thus far
-- the problem
-- review of embedding algorithms, interactive graphics, tours
-- technology
-- design
-- examples/benchmarks
-  - Kevin moon
-  - quick draw
-- future work
-
-We begin with the data science life cycle  
-
-Add a human in the loop
-
-Zoom on in on the import wrangling
-
-Show the PhD thus far
-
-plyranges 
-
-How plyranges leads to be able to express new types of analyses 
-
-The fluentGenomics paper and the superintronic paper 
-
-Back to the lifecycle 
-
-Zoom in on the visualisation and model side 
-
-In particular we are going to looking embedding algorithms or how we look at high dimensional space 
-
-Briefly describe the overarching goal of these methods 
-
-How are these actually used in people’s work
-
-Cluster orientation
-
-What does that involve?
-
-Identification, shape and verification 
-
-Two tools for looking at this 
-
-Non linear embedding algorithms 
-Tours
-
-Zoom in non linear embedding algorithms 
-
-Focus on tSNE
-
-A description of the algorithm 
-
-How does it work
-
-What are the important parameters 
-
-Focus on tour
-
-A description of what it is
-
-How does it work?
-
-The tour demands an interactive framework 
-
-Recasting the tour as a streaming data problem 
-
-How does this work?
-
-Description of the application 
-
-Show a silly example of user interaction with the pollen data 
-
-This gives a simple overview of the interface and API
-
-Our approach: you can have it all
-
-Ensemble graphics 
-
-Interactions 
-
-Brushing and highlighting 
-
-Case study 1: fake trees
-
-
-Case study 2: quick draw 
-
-Limitations 
-
-Further improvements 
-
-Next steps 
-
-Take homes
-
--->
-
 ---
 class: inverse, middle, center
 
 # The story so far...
 
 ---
+class: center, middle
 
+```{r dse, echo = FALSE, out.width="80%"}
+include_graphics("img/data-science-explore.png")
+```
 
+---
+class: center, middle
 
+```{r dse-human, echo = FALSE, out.width="80%"}
+include_graphics("img/data-science-explore-human.png")
+```
 
-# Background
+---
+class: center, middle
+
+```{r dse-me, echo = FALSE, out.width="80%"}
+include_graphics("img/data-science-explore-me.png")
+```
 
 ---
 
-Put More slides here.
+```{r plyranges, echo = FALSE, out.width="80%"}
+include_graphics("img/plyranges-paper.png")
+```
+
+```{r plyranges-hex, echo = FALSE, out.width="30%"}
+include_graphics("img/plyranges.png")
+```
 
 ---
 
-# Take homes
+```{r f1000, echo = FALSE, out.width = "80%"}
+include_graphics("img/f1000.png")
+```
+
+---
+
+```{r superintronic-paper, out.width = "80%"}
+include_graphics("img/superintronic-paper.png")
+```
+
+```{r superintronic-hex, out.width = "30%"}
+include_graphics("img/superintronic.png")
+```
+---
+class: inverse, middle, center 
+
+```{r back-to-cycle, echo = FALSE, out.width="80%"}
+include_graphics("img/data-science-explore-human.png")
+```
+
+---
+class: middle, center
+
+```{r me-now, echo = FALSE, out.width="80%"}
+include_graphics("img/data-science-explore-human-now.png")
+```
+
+---
+class: middle, center
+
+# Interactive visualisation for high-dimensional data analysis
+
+---
+
+# Motivation: non-linear dimensionality reduction methods
+
+---
+
+# Big picture: what do these methods do?
+
+---
+
+# Big picture: How are these methods used in the wild?
+
+---
+# Cluster orientation tasks
+
+---
+
+# Cluster idenfication, shapes, and verification
+
+---
+
+# Two approaches embeddings and tours
+
+---
+
+# Orientation with t-SNE
+
+---
+
+# Description
+
+---
+
+# How does it work?
+
+---
+
+# Important parameters
+
+---
+
+# t-SNE views
+
+state of the art, mental map in high-dimensional plot
+hold on to these ideas 
+
+----
+
+# Orientation with tours
+
+---
+
+
+# Description
+
+---
+
+# How does it work?
+
+---
+
+
+
+# Why do we need interactivity?
+
+---
+
+# Tours as streams
+
+---
+
+# How does this work?
+
+---
+
+# Hidden messages
+
+```{r, echo = TRUE, eval = FALSE}
+library(liminal)
+data(pollen, package = "animation")
+limn_tour(pollen, cols = dplyr::everything())
+```
+
+---
+
+# Hidden messages
+
+```{r, eval = FALSE}
+# show output as video
+mp4_vid
+```
+
+---
+
+# Our approach: you can have it all
+
+---
+
+# Ensemble graphics
+
+---
+
+# Interactions
+
+---
+
+# Linked Brushing and Highlighting
+
+---
+
+# How do they work?
+
+---
+
+# Case study: High-dimensional trees
+
+---
+
+# Description
+
+---
+
+# Linked highlighting shows how t-SNE breaks topology
+
+---
+
+# Reparmeterising partially fixes the problem
+
+---
+
+# Linked Brushing identifies distortions
+
+---
+
+# Case study: QuickDraw
+
+---
+
+# Description
+
+---
+
+# When does a cat look like a dog?
+
+---
+
+# Limitations
+
+---
+
+# Spatially resolved brushes
+
+---
+
+# How do they work?
 
 ---
 
@@ -208,12 +317,10 @@ Put More slides here.
 
 ---
 
-# Test
-
-.small[small]
-.
+# Take homes
 
 ---
+
 
 # Acknowledgements
 
