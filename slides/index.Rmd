@@ -20,9 +20,9 @@ layout: true
 
 ```{r setup, include=FALSE}
 # options(htmltools.dir.version = FALSE, width = 120)
-# NOTE TO SELF: The CSS styles were created in `create-njt-theme.R`
+# NOTE TO SELF: The CSS styles were created in `create-sal-theme.R`
 knitr::opts_chunk$set(
-  fig.path = "figures/",
+  fig.path = "img/",
   cache.path = "cache/",
   fig.align = "center",
   fig.width = 13,
@@ -62,7 +62,7 @@ fig.fullsize <- c(fig.height = 3.5, fig.width = 8, out.width = "150%"
 
 as_table <- function(...) knitr::kable(..., format='html', digits = 3)
 
-# **ni**ck's **pa**lette
+# palette
 slpal <- list(red = "#d51d5e",
              orange = "#ffc358",
              blue = "#00CFFF",
@@ -89,14 +89,102 @@ talk outline
   - Kevin moon
   - quick draw
 - future work
+
+We begin with the data science life cycle  
+
+Add a human in the loop
+
+Zoom on in on the import wrangling
+
+Show the PhD thus far
+
+plyranges 
+
+How plyranges leads to be able to express new types of analyses 
+
+The fluentGenomics paper and the superintronic paper 
+
+Back to the lifecycle 
+
+Zoom in on the visualisation and model side 
+
+In particular we are going to looking embedding algorithms or how we look at high dimensional space 
+
+Briefly describe the overarching goal of these methods 
+
+How are these actually used in people’s work
+
+Cluster orientation
+
+What does that involve?
+
+Identification, shape and verification 
+
+Two tools for looking at this 
+
+Non linear embedding algorithms 
+Tours
+
+Zoom in non linear embedding algorithms 
+
+Focus on tSNE
+
+A description of the algorithm 
+
+How does it work
+
+What are the important parameters 
+
+Focus on tour
+
+A description of what it is
+
+How does it work?
+
+The tour demands an interactive framework 
+
+Recasting the tour as a streaming data problem 
+
+How does this work?
+
+Description of the application 
+
+Show a silly example of user interaction with the pollen data 
+
+This gives a simple overview of the interface and API
+
+Our approach: you can have it all
+
+Ensemble graphics 
+
+Interactions 
+
+Brushing and highlighting 
+
+Case study 1: fake trees
+
+
+Case study 2: quick draw 
+
+Limitations 
+
+Further improvements 
+
+Next steps 
+
+Take homes
+
 -->
 
 ---
 class: inverse, middle, center
 
-# Intro
+# The story so far...
 
 ---
+
+
+
 
 # Background
 
