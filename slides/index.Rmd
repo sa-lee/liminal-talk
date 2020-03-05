@@ -218,7 +218,7 @@ class: middle, center
 ```{r, echo = FALSE}
 # taken from Holmes and Ngyuen
 set.seed(98574)
-m <- 100
+m <- 500
 d <- 2
 p <- 10
 k <- 5
@@ -233,7 +233,8 @@ X <- lapply(seq_len(k), function(i) {
 X_tbl <- dplyr::bind_rows(X, .id = "cluster")
 X <- as.matrix(X_tbl[,-1])
 Y <- X  %*% matrix(rnorm(d*p), ncol = p)
-X_tbl <- broom::augment(prcomp(Y), X_tbl)
+pca_y <- prcomp(Y)
+X_tbl <- broom::augment(pca_y, X_tbl)
 X_tbl <- dplyr::rename_all(X_tbl, 
                           ~stringr::str_replace(., ".fitted", ""))
 ```
@@ -263,7 +264,7 @@ p +
 
 ```{r, echo = FALSE}
 set.seed(7365) 
-n <- 500
+n <- 5000
 p <- 10
 sigma <- 0.01
 t <- sort(c(seq(0, 1, length.out = 100), runif(n-100)))
@@ -397,17 +398,38 @@ class: inverse, middle, center
 
 ---
 
-# Continuous gradients 
+# Continuous gradients revisited
 
-```{r}
+```{r, echo = FALSE, out.width = "80%"}
 set.seed(1999)
-default <- Rtsne::Rtsne(X)$Y
-perp5 <- Rtsne::Rtsne(X, perplexity = nrow(X) / 100)$Y
-eta <- Rtsne::Rtsne(X, eta = nrow(X) / 12)$Y
-y_init <- Rtsne::Rtsne(X, Y_init = )
+tsne_run <- list(
+  default = Rtsne::Rtsne(X, pca = FALSE)$Y,
+  perplexity = Rtsne::Rtsne(X, pca = FALSE, perplexity = nrow(X) / 100)$Y,
+  learning_rate = Rtsne::Rtsne(X, pca = FALSE, eta = nrow(X) / 12)$Y,
+  y_init = Rtsne::Rtsne(X, pca = FALSE, Y_init = clamp_sd(pca.res$x[,1:2], sd = 1e-4))$Y
+)
+tsne_run <- dplyr::bind_rows(
+  lapply(tsne_run, 
+         function(.) { 
+           cbind(as.data.frame(.), 
+                 data.frame(depth = t)) 
+         }),
+  .id = "type") 
+tsne_run[["type"]] <- factor(tsne_run[["type"]],
+                             levels = unique(tsne_run[["type"]]),
+                             labels = c("default",
+                                        "learning rate: 40",
+                                        "perplexity: 5",
+                                        "PCA initialisation"))
+ggplot(tsne_run, aes(x = V1, y = V2, color = depth)) +
+  geom_point() +
+  facet_wrap(~type, scales = "free") +
+  scale_color_viridis_c() +
+  xlab("tsne1") + ylab("tsne2") +
+  theme_minimal(30)
 ```
 
-----
+---
 
 # Orientation with tours
 
