@@ -55,6 +55,7 @@ write_xaringan_theme(
 
 extra_css <- list(
   ".red"   = list(color = "red"),
+  ".blue" = list(color = "blue"),
   ".small" = list("font-size" = "80%"),
   ".tiny" = list("font-size" = "60%"),
   ".large" = list("font-size" = "150%"),
