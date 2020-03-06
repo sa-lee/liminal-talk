@@ -143,25 +143,25 @@ class: middle, center
 
 
 
-&lt;img src="img/unnamed-chunk-4-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/cluster-p-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 # ... and verification
 
 
-&lt;img src="img/unnamed-chunk-5-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/cluster-p2-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 # Dimension synthesis... 
 
 
-&lt;img src="img/unnamed-chunk-7-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/unnamed-chunk-3-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 # ... revealing continous gradients
 
-&lt;img src="img/unnamed-chunk-8-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/gp2-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -266,60 +266,164 @@ class: inverse, middle, center
 
 ---
 
-# Continuous gradients 
+# Continuous gradients revisited
 
-&lt;img src="img/unnamed-chunk-9-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+.center[
+&lt;img src="img/gradients-revisited-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+---
+
+# Now with more t-SNE
+
+.center[
+&lt;img src="img/gradients-revisted-tsne-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+---
+
+# t-SNE gives a lot of flexibility
+
+.large[
+- there's a lot of parameters to tweak
+- emphasises locality, distance between clusters of points can be misleading
+- size of clusters can be misleading 
+- may require a few different runs to capture topology of data
+- if there are clusters it will find them 
+]
+
+---
+class: middle, inverse, center
+
+
+# tSNE is state of the art, but how can we help analysts use it?
+
 
 ---
 
 # Orientation with tours
+
+.large[
+
+- a technique from statistical graphics
+- has been successfully applied to problems in particle physics and model interpretation
+- can be used to visualise `\(d \gt 3\)` using `\(d = 1\)` or `\(d=2\)` views
+
+]
 
 ---
 
 
 # Description
 
+.large[
+Recall our `\(n \times p\)` data matrix `\(X\)`
+
+A tour is sequence of `\(p \times d\)` orthonormal projection matrices (bases) `\(A_{t \in \mathbb{N}}\)`, where `\(d\)` is typically `\(1\)` or `\(2\)`.
+
+A tour allows us to explore the set of all `\(d\)`-dimensional subspaces via the projection of `\(X\)` onto `\(A\)`. 
+]
+
 ---
 
 # How does it work?
 
----
+.large[
+We visualise the sequence of low dimensional projections:
 
+`$$Y_{t} = XA_{t}$$`
 
-
-# Why do we need interactivity?
-
----
-
-# Tours as streams
+as animated scatter or density plots. 
+]
 
 ---
 
-# How does this work?
+.large[**Grand Tour:** generate a set of random orthnormal bases, interpolate between them.]
+
+&lt;img src="img/bases-generation.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+(From _Buja, Cook, Asimov and Hurley, 2004_)
+---
+
+.large[The tour is greatly enhanced by interactivity:
+
+- play/pause the sequence 
+- zooming to find hidden structuring
+- higlighting within the tour path
+- linking between views
+]
+
+---
+class: inverse, middle, center
+
+# A brief software sojourn
 
 ---
 
-# Hidden messages
+# `liminal` an R package for interactive tours
+
+.large[
+- extends the `tourr` package but uses a modern R API
+- leverages client-side visualisation and interaction via `vegawidget`
+- treats the basis interpolation/generation steps as a reactive stream  
+]
+
+---
+
+# The API and hidden messages
 
 
 ```r
 library(liminal)
+
 data(pollen, package = "animation")
-limn_tour(pollen, cols = dplyr::everything())
+
+limn_tour(
+  pollen, 
+  cols = dplyr::everything() # which columns to form X,
+  tour_path = grand_tour() # how to generate the sequence
+)
 ```
 
----
-
-# Hidden messages
-
-
 
 ---
-
-# Our approach: you can have it all
+class: middle, center
+# Demo #1, the secret word is...
 
 ---
 
+# Tours as reactive streams
+
+.large[*Key idea*: instead of realising the entire tour path, 
+generate new bases according to a desired frame rate. 
+Allows user interactions to pause/restart the stream.
+]
+---
+class: middle, center
+
+# Demo #2, continuous gradients revisited (again)
+
+---
+
+# Thesis-driven development
+
+.large[
+- increasing interactivity increases code complexity
+- large data = latency
+- layers of complexity R &lt;-&gt; JS &lt;-&gt; vegalite
+- ideally would like to do everything client side
+]
+
+---
+
+class: inverse, middle, center
+
+# Global and local; embeddings with tours 
+
+---
+
+.large[
+
+
+]
 # Ensemble graphics
 
 ---
@@ -336,37 +440,39 @@ limn_tour(pollen, cols = dplyr::everything())
 
 ---
 
-# Case study: High-dimensional trees
+# Case study: High-dimensional trees, `\(p=100\)`, `\(n=3000\)`
+
+.center[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/tree.png" alt="Example from Kevin Moon" width="50%" /&gt;
+&lt;p class="caption"&gt;Example from Kevin Moon&lt;/p&gt;
+&lt;/div&gt;
+]
+
+
+---
+class: inverse, middle, center
+
+# Demo 3: linked highlighting shows how default t-SNE breaks topology
+
+---
+class: inverse, middle, center
+
+# Demo 4: simple linked brushing identifies distortions
 
 ---
 
-# Description
+&lt;!-- # Case study: QuickDraw --&gt;
 
----
+&lt;!-- --- --&gt;
 
-# Linked highlighting shows how t-SNE breaks topology
+&lt;!-- # Description --&gt;
 
----
+&lt;!-- --- --&gt;
 
-# Reparmeterising partially fixes the problem
+&lt;!-- # When does a cat look like a dog? --&gt;
 
----
-
-# Linked Brushing identifies distortions
-
----
-
-# Case study: QuickDraw
-
----
-
-# Description
-
----
-
-# When does a cat look like a dog?
-
----
+&lt;!-- --- --&gt;
 
 # Limitations
 
@@ -391,6 +497,7 @@ limn_tour(pollen, cols = dplyr::everything())
 ---
 
 # Take homes
+
 
 ---
 

@@ -215,7 +215,7 @@ class: middle, center
 
 # Cluster idenfication...
 
-```{r, echo = FALSE}
+```{r cluster-id, echo = FALSE}
 # taken from Holmes and Ngyuen
 set.seed(98574)
 m <- 500
@@ -239,7 +239,7 @@ X_tbl <- dplyr::rename_all(X_tbl,
                           ~stringr::str_replace(., ".fitted", ""))
 ```
 
-```{r, echo = FALSE, dependson=X_tbl, out.width = "80%", out.height="80%"}
+```{r cluster-p, echo = FALSE, dependson=X_tbl, out.width = "80%", out.height="80%"}
 library(ggplot2)
 p <- ggplot(X_tbl, aes(x = PC1, y = PC2)) + 
   geom_point() + 
@@ -252,7 +252,7 @@ p
 # ... and verification
 
 
-```{r, echo = FALSE, out.width = "80%", out.height="80%"}
+```{r cluster-p2, echo = FALSE, out.width = "80%", out.height="80%"}
 p + 
   geom_point(aes(colour = cluster)) +
   scale_color_brewer(palette = "Dark2")
@@ -262,9 +262,9 @@ p +
 
 # Dimension synthesis... 
 
-```{r, echo = FALSE}
+```{r gp, echo = FALSE}
 set.seed(7365) 
-n <- 5000
+n <- 500
 p <- 10
 sigma <- 0.01
 t <- sort(c(seq(0, 1, length.out = 100), runif(n-100)))
@@ -289,7 +289,7 @@ p
 ---
 # ... revealing continous gradients
 
-```{r, echo = FALSE, out.width = "80%"}
+```{r gp2, echo = FALSE, out.width = "80%"}
 p + 
   geom_point(aes(color = depth)) + 
   scale_color_viridis_c()
@@ -400,7 +400,19 @@ class: inverse, middle, center
 
 # Continuous gradients revisited
 
-```{r, echo = FALSE, out.width = "80%"}
+.center[
+```{r gradients-revisited, echo = FALSE, out.width="80%"}
+p + 
+  geom_point(aes(color = depth)) + 
+  scale_color_viridis_c()
+```
+]
+---
+
+# Now with more t-SNE
+
+.center[
+```{r gradients-revisted-tsne, cache = TRUE, echo = FALSE, out.width = "80%"}
 set.seed(1999)
 tsne_run <- list(
   default = Rtsne::Rtsne(X, pca = FALSE)$Y,
@@ -421,66 +433,163 @@ tsne_run[["type"]] <- factor(tsne_run[["type"]],
                                         "learning rate: 40",
                                         "perplexity: 5",
                                         "PCA initialisation"))
-ggplot(tsne_run, aes(x = V1, y = V2, color = depth)) +
+tsne_view <- ggplot(tsne_run, aes(x = V1, y = V2, color = depth)) +
   geom_point() +
   facet_wrap(~type, scales = "free") +
   scale_color_viridis_c() +
   xlab("tsne1") + ylab("tsne2") +
   theme_minimal(30)
+
+tsne_view
 ```
+]
+---
+
+# t-SNE gives a lot of flexibility
+
+.large[
+- there's a lot of parameters to tweak
+- emphasises locality, distance between clusters of points can be misleading
+- size of clusters can be misleading 
+- may require a few different runs to capture topology of data
+- if there are clusters it will find them 
+]
+
+---
+class: middle, inverse, center
+
+
+# tSNE is state of the art, but how can we help analysts use it?
+
 
 ---
 
 # Orientation with tours
+
+.large[
+
+- a technique from statistical graphics
+- has been successfully applied to problems in particle physics and model interpretation
+- can be used to visualise $d \gt 3$ using $d = 1$ or $d=2$ views
+
+]
 
 ---
 
 
 # Description
 
+.large[
+Recall our $n \times p$ data matrix $X$
+
+A tour is sequence of $p \times d$ orthonormal projection matrices (bases) $A_{t \in \mathbb{N}}$, where $d$ is typically $1$ or $2$.
+
+A tour allows us to explore the set of all $d$-dimensional subspaces via the projection of $X$ onto $A$. 
+]
+
 ---
 
 # How does it work?
 
----
+.large[
+We visualise the sequence of low dimensional projections:
 
+$$Y_{t} = XA_{t}$$
 
-
-# Why do we need interactivity?
-
----
-
-# Tours as streams
+as animated scatter or density plots. 
+]
 
 ---
 
-# How does this work?
+.large[**Grand Tour:** generate a set of random orthnormal bases, interpolate between them.]
+
+```{r basis-view, out.width="50%", echo = FALSE}
+include_graphics("img/bases-generation.png")
+```
+
+(From _Buja, Cook, Asimov and Hurley, 2004_)
+---
+
+.large[The tour is greatly enhanced by interactivity:
+
+- play/pause the sequence 
+- zooming to find hidden structuring
+- higlighting within the tour path
+- linking between views
+]
+
+---
+class: inverse, middle, center
+
+# A brief software sojourn
 
 ---
 
-# Hidden messages
+# `liminal` an R package for interactive tours
+
+.large[
+- extends the `tourr` package but uses a modern R API
+- leverages client-side visualisation and interaction via `vegawidget`
+- treats the basis interpolation/generation steps as a reactive stream  
+]
+
+---
+
+# The API and hidden messages
 
 ```{r, echo = TRUE, eval = FALSE}
 library(liminal)
+
 data(pollen, package = "animation")
-limn_tour(pollen, cols = dplyr::everything())
+
+limn_tour(
+  pollen, 
+  cols = dplyr::everything() # which columns to form X,
+  tour_path = grand_tour() # how to generate the sequence
+)
 ```
 
+
 ---
-
-# Hidden messages
-
-```{r, eval = FALSE}
-# show output as video
-mp4_vid
-```
+class: middle, center
+# Demo #1, the secret word is...
 
 ---
 
-# Our approach: you can have it all
+# Tours as reactive streams
+
+.large[*Key idea*: instead of realising the entire tour path, 
+generate new bases according to a desired frame rate. 
+Allows user interactions to pause/restart the stream.
+]
+---
+class: middle, center
+
+# Demo #2, continuous gradients revisited (again)
 
 ---
 
+# Thesis-driven development
+
+.large[
+- increasing interactivity increases code complexity
+- large data = latency
+- layers of complexity R <-> JS <-> vegalite
+- ideally would like to do everything client side
+]
+
+---
+
+class: inverse, middle, center
+
+# Global and local; embeddings with tours 
+
+---
+
+.large[
+
+
+]
 # Ensemble graphics
 
 ---
@@ -497,37 +606,38 @@ mp4_vid
 
 ---
 
-# Case study: High-dimensional trees
+# Case study: High-dimensional trees, $p=100$, $n=3000$
+
+.center[
+```{r fake-trees, echo = FALSE, out.width = "50%", fig.cap="Example from Kevin Moon"}
+include_graphics("img/tree.png")
+```
+]
+
+
+---
+class: inverse, middle, center
+
+# Demo 3: linked highlighting shows how default t-SNE breaks topology
+
+---
+class: inverse, middle, center
+
+# Demo 4: simple linked brushing identifies distortions
 
 ---
 
-# Description
+<!-- # Case study: QuickDraw -->
 
----
+<!-- --- -->
 
-# Linked highlighting shows how t-SNE breaks topology
+<!-- # Description -->
 
----
+<!-- --- -->
 
-# Reparmeterising partially fixes the problem
+<!-- # When does a cat look like a dog? -->
 
----
-
-# Linked Brushing identifies distortions
-
----
-
-# Case study: QuickDraw
-
----
-
-# Description
-
----
-
-# When does a cat look like a dog?
-
----
+<!-- --- -->
 
 # Limitations
 
@@ -552,6 +662,7 @@ mp4_vid
 ---
 
 # Take homes
+
 
 ---
 
