@@ -16,7 +16,7 @@ class: left, middle, inverse, title-slide
 # Casting Multiple Shadows
 ## high-dimensional interactive data visualisation with tours and embeddings
 ### <span style="font-size: 90%;">Stuart Lee, Monash University</span>
-### <span style="font-size: 90%;">Final Review<br><br> Tuesday 10th March, 2020 </span> <br><br>
+### <span style="font-size: 90%;">Pre-submission Seminar<br><br> Tuesday 10th March, 2020 </span> <br><br>
 
 ---
 
@@ -38,18 +38,23 @@ class: inverse, middle, center
 ---
 class: center, middle
 
-&lt;img src="img/data-science-explore.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/data-science.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle
 
-&lt;img src="img/data-science-explore-human.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/data-science-wrangle.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle
 
-&lt;img src="img/data-science-explore-me.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/data-science-wrangle.png" width="80%" style="display: block; margin: auto;" /&gt;
 
+.large[
+👩🏽
+🔬🧬🧬👨🏻
+🔬
+]
 ---
 
 &lt;img src="img/plyranges-paper.png" width="80%" style="display: block; margin: auto;" /&gt;
@@ -66,14 +71,19 @@ class: center, middle
 
 &lt;img src="img/superintronic.png" width="30%" style="display: block; margin: auto;" /&gt;
 ---
-class: inverse, middle, center 
+class: middle, center 
 
-&lt;img src="img/data-science-explore-human.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/data-science-wrangle.png" width="80%" style="display: block; margin: auto;" /&gt;
+.large[
+👩🏽
+🔬🧬🧬👨🏻
+🔬
+]
 
 ---
 class: middle, center
 
-&lt;img src="img/data-science-explore-human-now.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/data-science-explore.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -85,15 +95,15 @@ class: middle, center
 
 # Overview
 
+.large[
 * Big Picture
-* Orientation: t-distributed stochastic neighbor embedding
+* Orientation: t-distributed stochastic neighbour embedding
 * Orientation: tours
-* Why interactive graphics are a must
-* Our approach `liminal` and implementation details
-* Case studies
-
+* `liminal` package and usage examples
+]
 
 ---
+
 
 .pull-left[
 &lt;img src="img/masocko.png" width="100%" height="100%" style="display: block; margin: auto;" /&gt;
@@ -139,7 +149,7 @@ class: middle, center
 
 ---
 
-# Cluster idenfication...
+# Cluster identification...
 
 
 
@@ -159,7 +169,7 @@ class: middle, center
 &lt;img src="img/unnamed-chunk-3-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
 
 ---
-# ... revealing continous gradients
+# ... revealing continuous gradients
 
 &lt;img src="img/gp2-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 
@@ -170,7 +180,7 @@ class: inverse, middle
 
 .large[
 **Assumption**: 
-the DR form is _"faithful"_ to the high-dimensional data it was obtained 
+the DR form is _"faithful"_ to the source high-dimensional data
 ] 
 
 ---
@@ -186,16 +196,21 @@ the DR form is _"faithful"_ to the high-dimensional data it was obtained
 
 ---
 
-# Description
+.large[
+Our high dimensional dataset oriented row wise
 
-Our high dimensional dataset `\(X = [\mathbf{x_1}, ..., \mathbf{x_n}] \subset \mathbb{R}^p\)` and our target lower dimensional embedding  `\(Y =  [\mathbf{y_1}, ..., \mathbf{y_n}] \subset \mathbb{R}^d\)`
+`$$X = [\mathbf{x_1}, ..., \mathbf{x_n}] \subset \mathbb{R}^p$$` 
+and our target lower dimensional embedding  
+`$$Y =  [\mathbf{y_1}, ..., \mathbf{y_n}] \subset \mathbb{R}^d$$`
 
-_for visualisation generally `\(d =  2\)` or `\(d = 3\)`
+_for visualisation  `\(d \in \{1,2,3\}\)`_.
+]
 ---
 
-# How does it work?
+# How does the algorithm work?
 
-.large[Key idea: model pairwise high-dimensional distances as joint probabilities using a Gaussian kernel
+.large[_Key idea:_ use pairwise `\(\mathbf{x_i}\)` and `\(\mathbf{x_j}\)` 
+distances as joint probabilities using a Gaussian kernel
 
 `\(p_{i|j} = \frac{\exp(-\lVert \mathbf{x_i - x_j} \rVert ^ 2 / 2\sigma_i^2)}{\sum_{k \ne i}\exp(-\lVert \mathbf{x_j - x_k} \rVert ^ 2 / 2\sigma_i^2)}\)` and `\(p_{ij} = \frac{p_{i|j} + p_{j|i}}{2}\)`
 ]
@@ -204,13 +219,12 @@ _for visualisation generally `\(d =  2\)` or `\(d = 3\)`
 
 # How does it work?
 
-.large[The variance `\(\sigma_{i}^2\)` is chosen based on user supplied
-value of perplexity:
+.large[The variance `\(\sigma_{i}^2\)` of the Gaussian is chosen based on user supplied value of perplexity:
 
 `\(\text{perplexity}_i = \exp(-\log(2) \sum_{i \ne j}p_{j|i}\log_2(p_{j|i}))\)`
 
 _The larger the value of perplexity, the larger the variance.
-Perpelxity controls the number of nearest neighbors._ 
+Perplexity controls the number of nearest neighbours._ 
 ]
 
 ---
@@ -218,7 +232,7 @@ Perpelxity controls the number of nearest neighbors._
 # How does it work?
 
 .large[
-Key idea: model pairwise distances in the embedding space `\(Y\)` as joint probabilities using a Cauchy kernel:
+_Key idea:_ use pairwise distances `\(\mathbf{y_i}\)` and `\(\mathbf{y_j}\)` to form joint probabilities using a Cauchy kernel:
 
 `$$q_{ij} = \frac{w_{ij}}{Z}$$` 
 
@@ -230,10 +244,10 @@ where `\(w_{ij} = \frac{1}{ 1 + \lVert \mathbf{y_i - y_j} \rVert ^ 2}\)` and `\(
 # How does it work?
 
 .large[
-Obtain `\(Y\)` that minimises the Kullback-Leibler divergence between
-the probability distrubtions:
+Obtain `\(Y\)` so that Kullback-Leibler divergence between
+the probability distributions `\(\mathcal{P}\)` and `\(\mathcal{Q}\)` is minimised:
 
-`$$\sum_{i \ne j} p_{ij} \log \frac{p_{ij}}{q_{ij}}$$`
+`$$\mathcal{L} = \sum_{i \ne j} p_{ij} \log \frac{p_{ij}}{q_{ij}}$$`
 ]
 
 ---
@@ -243,7 +257,7 @@ the probability distrubtions:
 .large[
 The loss function can be recast in terms of .red[attractive] and .blue[repulsive] forces:
 
-`$$\color{red}{-\sum_{i \ne j} p_{ij}\log w_{ij}} + \color{blue}{\log\sum_{i \ne j} w_{ij}}$$`
+`$$\mathcal{L} = \color{red}{-\sum_{i \ne j} p_{ij}\log w_{ij}} + \color{blue}{\log\sum_{i \ne j} w_{ij}}$$`
 ]
 
 
@@ -253,10 +267,10 @@ The loss function can be recast in terms of .red[attractive] and .blue[repulsive
 
 .large[
 - perplexity 
-- early exaggeration (adds a multiplier to the attractive force)
+- early exaggeration 
 - step size (learning rate)
 - number of iterations
-- initialisation of `\(Y\)`
+- initialisation of `\(Y\)` (default is random)
 ]
 
 ---
@@ -343,12 +357,14 @@ as animated scatter or density plots.
 (From _Buja, Cook, Asimov and Hurley, 2004_)
 ---
 
+# We need interactivity
+
 .large[The tour is greatly enhanced by interactivity:
 
-- play/pause the sequence 
-- zooming to find hidden structuring
-- higlighting within the tour path
-- linking between views
+- play/pause the current projection
+- zooming to find 'interesting' points
+- highlighting sets of points
+- linking between multiple views
 ]
 
 ---
@@ -362,8 +378,8 @@ class: inverse, middle, center
 
 .large[
 - extends the `tourr` package but uses a modern R API
-- leverages client-side visualisation and interaction via `vegawidget`
-- treats the basis interpolation/generation steps as a reactive stream  
+- leverage client-side visualisation and interaction via `vegawidget`
+- treats the basis generation/interpolation steps as a reactive stream  
 ]
 
 ---
@@ -392,9 +408,10 @@ class: middle, center
 
 # Tours as reactive streams
 
-.large[*Key idea*: instead of realising the entire tour path, 
-generate new bases according to a desired frame rate. 
-Allows user interactions to pause/restart the stream.
+.large[
+- don't need to realise the entire sequence
+- instead generate new bases according to a fixed frame rate
+- allows user interactions to play/pause on the current view
 ]
 ---
 class: middle, center
@@ -403,40 +420,52 @@ class: middle, center
 
 ---
 
-# Thesis-driven development
+# Thesis Driven Development
 
 .large[
-- increasing interactivity increases code complexity
-- large data = latency
-- layers of complexity R &lt;-&gt; JS &lt;-&gt; vegalite
-- ideally would like to do everything client side
+- `liminal` began life as [`sneezy`](https://github.com/sa-lee/sneezy)
+- __desire__ to have interactivity built in from the start
+- __building__ on top of `vegawidget`
+- prototype `\(\longleftrightarrow\)` edge-case `\(\longleftrightarrow\)` re-factor 
+
 ]
 
 ---
 
 class: inverse, middle, center
 
-# Global and local; embeddings with tours 
+# Casting Multiple Shadows
 
 ---
+class: middle, center
 
 .large[
 
-
+&lt;img src="img/multiple-shadows.jpg" width="100%" style="display: block; margin: auto;" /&gt;
 ]
-# Ensemble graphics
 
 ---
 
-# Interactions
+# Why settle for 'just' one visualisation?
+
+.medium[
+
+&lt;img src="img/ensemble-example.jpeg" width="50%" style="display: block; margin: auto;" /&gt;
+Ensemble Graphics provide new perspectives and connections 
+_(Unwin, 2018)_
+]
 
 ---
 
-# Linked Brushing and Highlighting
+# `liminal` an R package for ensembling tours and embeddings
 
----
+.large[
+- **concatenated views:** see local and global structures
+- **user interactions:** verify cluster shapes and locations
+- **quality checks:** interrogate an embedding with reference
+to the underlying data
+]
 
-# How do they work?
 
 ---
 
@@ -460,7 +489,84 @@ class: inverse, middle, center
 
 # Demo 4: simple linked brushing identifies distortions
 
+
 ---
+class: inverse, middle
+
+.large[
+**Assumption**: 
+the DR form is _"faithful"_ to the source high-dimensional data
+] 
+
+
+---
+
+class: middle, center
+
+.huge[Or: how do you know if an embedding is 'good'?]
+
+
+---
+class: middle, center
+
+.huge[
+**Answer**: It depends.
+]
+
+---
+
+# A non-exhaustive list of things you could look at
+
+.medium[
+- **distance preservation**: what is the relationship between pairwise distances in `\(X\)` and pairwise distances in `\(Y\)`?
+- **neighbourhood preservation**:  do points in `\(Y\)` have the same nearest neighbours as those in `\(X\)`? And vice-versa?
+- **rank preservation**: replace distances with ranks 
+]
+
+---
+class: middle, center
+
+
+.huge[Can these be investigated visually?]
+
+---
+
+# Spatial Linked Brushes
+
+.large[
+**Key idea:** Look-up the `\(k\)`-nearest neighbours graph for observations that fall inside a brushing region for a given view. 
+]
+
+---
+
+---
+# Spatial Linked Brushes
+
+.large[
+**Key idea:** In the secondary view, highlight the corresponding neighbours using colour or transparency. 
+]
+
+---
+# Spatial Linked Brushes
+
+.large[
+
+**distortion**: points that are far away in one view, will show neighbours that are close together in the opposing view.
+
+**diffusion**: points that are close in one view, will show neighbours that are far apart in the opposing view. 
+
+]
+
+---
+
+# Spatial Linked Brushes
+
+.medium[
+- The `\(k\)` nearest neighbours graph can be pre-computed quickly, for either `\(X\)`, `\(Y\)` or both.
+- Instead of using the neighbour indices, we could use the neighbour distances instead
+- Composition of multiple brushes could be used to show where there are matches/mismatches between nearest neighbour graphs 
+]
+
 
 &lt;!-- # Case study: QuickDraw --&gt;
 
@@ -474,33 +580,42 @@ class: inverse, middle, center
 
 &lt;!-- --- --&gt;
 
-# Limitations
-
 ---
 
-# Spatially resolved brushes
-
----
-
-# How do they work?
-
----
-
-# Future Directions
+# Thesis Driven Development Part 2
 
 .large[
-- More features
-- More features
-- More features
+- adding interactions increases code complexity
+- __latency:__  round-trips between R and Javascript 
+- __discoverability:__ specifying UI elements at the code level or within the app?
+- __displays:__ appropriate visual encodings for large _n_
+
+]
+
+---
+
+# Next steps
+
+.medium[
+- Implementation and testing of spatial brushes
+- Cleaner user controls and interface
+- Scaling up for larger datasets
+- Exploration of other non-linear embedding techniques
+- Getting the package on CRAN
 ]
 
 ---
 
 # Take homes
 
+.large[
+
+* DR oriented workflows are complimented by the tour
+* Composing multiple views provides more insight 
+* User interactions allow us to explore and check *tSNE* views
+]
 
 ---
-
 
 # Acknowledgements
 
@@ -511,18 +626,21 @@ class: inverse, middle, center
 ]
 
 .large.pull-right[
+- David Frazier
+- Charity Law
 - Ursula Laa
 - Nick Tierney
+- Earo Wang
 ]
 
 ---
 
 # Colophon
 
-.large[
-- Slides made using [xaringan](https://github.com/yihui/xaringan)
+.medium[
+- Slides made using [xaringan](https://github.com/yihui/xaringan) using [Nick Tierney's template](https://github.com/njtierney/njt-talks)
 - Extended with [xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
-- Colours taken + modified from [Kiki's Delivery Service](https://github.com/ewenme/ghibli)
+- Colours taken + modified from [Maureen Stone's Tableau10 Palettes](https://research.tableau.com/user/maureen-stone)
 - Header font is **Montserrat**
 - Body text font is **Open Sans**
 - Code font is **Fira Mono**

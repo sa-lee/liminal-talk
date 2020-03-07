@@ -24,15 +24,15 @@
 body {
   font-family: Open Sans, 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif;
   font-weight: 300;
-  color: #00CFFF;
+  color: #4c78a8;
 }
 h1, h2, h3 {
   font-family: Montserrat;
   font-weight: normal;
-  color: #00CFFF;
+  color: #4c78a8;
 }
 .remark-slide-content {
-  background-color: #fff4dc;
+  background-color: #FFFFFF;
   font-size: 30px;
   
   
@@ -56,18 +56,18 @@ h1, h2, h3 {
 }
 .remark-inline-code {
   font-size: 1em;
-  color: #E3A1B8;
+  color: #e45756;
   
   
 }
 .remark-slide-number {
-  color: #125972;
+  color: #b279a2;
   opacity: 1;
   font-size: 0.7em;
 }
-strong{color:#D98594;}
+strong{color:#e45756;}
 a, a > code {
-  color: #E7C99E;
+  color: #54a24b;
   text-decoration: none;
 }
 .footnote {
@@ -78,21 +78,21 @@ a, a > code {
   font-size: 0.5em;
 }
 .remark-code-line-highlighted {
-  background-color: #E7C99E;
+  background-color: #f58518;
 }
 .inverse {
-  background-color: #F2E4DA;
-  color: #86C2DA;
+  background-color: #000000;
+  color: #72b7b2;
   
 }
 .inverse h1, .inverse h2, .inverse h3 {
-  color: #86C2DA;
+  color: #72b7b2;
 }
 .title-slide, .title-slide h1, .title-slide h2, .title-slide h3 {
-  color: #86C2DA;
+  color: #72b7b2;
 }
 .title-slide {
-  background-color: #F2E4DA;
+  background-color: #000000;
   
   
   
@@ -132,7 +132,7 @@ img, video, iframe {
   max-width: 100%;
 }
 blockquote {
-  border-left: solid 5px #fdf4ac;
+  border-left: solid 5px #f58518;
   padding-left: 1em;
 }
 .remark-slide table {
@@ -144,11 +144,11 @@ blockquote {
 th, td { padding: 5px; }
 .remark-slide thead, .remark-slide tfoot, .remark-slide tr:nth-child(even) { background: #eee }
 table.dataTable tbody {
-  background-color: #fff4dc;
-  color: #00CFFF;
+  background-color: #FFFFFF;
+  color: #4c78a8;
 }
 table.dataTable.display tbody tr.odd {
-  background-color: #fff4dc;
+  background-color: #FFFFFF;
 }
 table.dataTable.display tbody tr.even {
   background-color: #eee;
@@ -157,10 +157,10 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
-  color: #00CFFF;
+  color: #4c78a8;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-  color: #00CFFF !important;
+  color: #4c78a8 !important;
 }
 
 @page { margin: 0; }

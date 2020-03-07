@@ -1,45 +1,51 @@
 library(xaringanthemer)
 
+t10 <- c(
+  "#4c78a8",
+  "#f58518",
+  "#e45756",
+  "#72b7b2",
+  "#54a24b",
+  "#eeca3b",
+  "#b279a2",
+  "#ff9da6",
+  "#9d755d",
+  "#bab0ac",
+  "#000000",
+  "#FFFFFF"
+)
 
-# colours inspired by
-kiki <- ghibli::ghibli_palettes[c("KikiLight")]
 
-slpal <- list(red = "#d51d5e",
-             orange = "#ffc358",
-             blue = "#00CFFF",
-             tan = "#D0C1AA",
-             light_blue = "#C0DDE1",
-             light_tan = "#F2E4DA",
-             light_orange = "#fdf4ac",
-             light_red = "#D98594",
-             pale_blue = "#86C2DA",
-             pale_tan = "#fff4dc",
-             pale_orange = "#E7C99E",
-             pale_red = "#E3A1B8")
 
+slpal <- t10
+names(slpal) <- c("blue", "orange", 
+                  "red", "lightblue", "green",
+                  "yellow", "purple", "pink", "brown", 
+                  "grey", "black", "white")
+  
 write_xaringan_theme(
-  text_color = slpal$blue,
+  text_color = slpal[["blue"]],
   text_font_size = "30px",
-  text_bold_color = slpal$light_red,
-  text_slide_number_color = "#125972",
+  text_bold_color = slpal[["red"]],
+  text_slide_number_color = slpal[["purple"]],
   text_slide_number_font_size = "0.7em",
   
   padding = "1em 2em 1em 2em",
   
-  header_color = slpal$blue,
+  header_color = slpal[["blue"]],
   
-  background_color = slpal$pale_tan,
-  link_color = slpal$pale_orange,
+  background_color = slpal[["white"]],
+  link_color = slpal[["green"]],
   
-  code_highlight_color = slpal$pale_orange,
-  code_inline_color = slpal$pale_red,
+  code_highlight_color = slpal[["orange"]],
+  code_inline_color = slpal[["red"]],
   code_font_size = "0.9em",
   
-  inverse_background_color = slpal$light_tan,
-  inverse_header_color = slpal$pale_blue,
-  inverse_text_color = slpal$pale_blue,
+  inverse_background_color = slpal[["black"]],
+  inverse_header_color = slpal[["lightblue"]],
+  inverse_text_color = slpal[["lightblue"]],
   
-  blockquote_left_border_color = slpal$light_orange,
+  blockquote_left_border_color = slpal[["orange"]],
   
   footnote_font_size = "0.5em",
   footnote_position_bottom = "4em",
@@ -54,8 +60,8 @@ write_xaringan_theme(
 )
 
 extra_css <- list(
-  ".red"   = list(color = "red"),
-  ".blue" = list(color = "blue"),
+  ".red"   = list(color = slpal[["red"]]),
+  ".blue" = list(color = slpal[["blue"]]),
   ".small" = list("font-size" = "80%"),
   ".tiny" = list("font-size" = "60%"),
   ".large" = list("font-size" = "150%"),
@@ -78,7 +84,7 @@ extra_css <- list(
   ".pull-right" = list("float" = "right",
                        "width" = "47%"),
   
-  "div.my-footer" = list("background-color" = slpal$light_blue,
+  "div.my-footer" = list("background-color" = "#86C2DA",
                          "position" = "absolute",
                          "bottom" = "0px",
                          "left" = "0px",
