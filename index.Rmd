@@ -16,7 +16,7 @@ output:
 ---
 
 layout: true
-<div class="my-footer"><span>bit.ly/LINK • @sa-lee</span></div> 
+<div class="my-footer"><span>bit.ly/39vj1mF • @sa-lee</span></div> 
 
 ```{r setup, include=FALSE}
 # options(htmltools.dir.version = FALSE, width = 120)
@@ -806,7 +806,7 @@ class: middle, center
 .large[
 `r icon::fa_box_open() ` [liminal](https://github.com/sa-lee/liminal)
 
-`r icon::fa('link')` [talk link]()
+`r icon::fa('link')` [talk link](https://bit.ly/39vj1mF)
 ]
 
 
