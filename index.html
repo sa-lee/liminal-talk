@@ -394,8 +394,8 @@ data(pollen, package = "animation")
 
 limn_tour(
   pollen, 
-  cols = dplyr::everything() # which columns to form X,
-  tour_path = grand_tour() # how to generate the sequence
+  cols = dplyr::everything(), # which columns to form X
+  tour_path = tourr::grand_tour() # how to generate the sequence
 )
 ```
 
@@ -437,12 +437,10 @@ class: inverse, middle, center
 # Casting Multiple Shadows
 
 ---
+
 class: middle, center
 
-.large[
-
-&lt;img src="img/multiple-shadows.jpg" width="100%" style="display: block; margin: auto;" /&gt;
-]
+&lt;img src="img/multiple-shadows.jpg" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
 
