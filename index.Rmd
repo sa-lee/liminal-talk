@@ -64,86 +64,6 @@ fig.fullsize <- c(fig.height = 3.5, fig.width = 8, out.width = "150%"
 as_table <- function(...) knitr::kable(..., format='html', digits = 3)
 ```
 
----
-class: inverse, middle, center
-
-# The story so far...
-
----
-class: center, middle
-
-```{r dse, echo = FALSE, out.width="80%"}
-include_graphics("img/data-science.png")
-```
-
----
-class: center, middle
-
-```{r dse-human, echo = FALSE, out.width="80%"}
-include_graphics("img/data-science-wrangle.png")
-```
-
----
-class: center, middle
-
-```{r dse-human-me, echo = FALSE, out.width="80%"}
-include_graphics("img/data-science-wrangle.png")
-```
-
-.large[
-👩🏽
-🔬🧬🧬👨🏻
-🔬
-]
----
-
-```{r plyranges, echo = FALSE, out.width="80%"}
-include_graphics("img/plyranges-paper.png")
-```
-
-```{r plyranges-hex, echo = FALSE, out.width="30%"}
-include_graphics("img/plyranges.png")
-```
-
----
-
-```{r f1000, echo = FALSE, out.width = "80%"}
-include_graphics("img/f1000.png")
-```
-
----
-
-```{r superintronic-paper, out.width = "80%"}
-include_graphics("img/superintronic-paper.png")
-```
-
-```{r superintronic-hex, out.width = "30%"}
-include_graphics("img/superintronic.png")
-```
----
-class: middle, center 
-
-```{r back-to-cycle, echo = FALSE, out.width="80%"}
-include_graphics("img/data-science-wrangle.png")
-```
-.large[
-👩🏽
-🔬🧬🧬👨🏻
-🔬
-]
-
----
-class: middle, center
-
-```{r me-now, echo = FALSE, out.width="80%"}
-include_graphics("img/data-science-explore.png")
-```
-
-
----
-class: middle, center
-
-# high-dimensional interactive data visualisation with tours and embedding
 
 ---
 
@@ -323,7 +243,7 @@ _for visualisation  $d \in \{1,2,3\}$_.
 ]
 ---
 
-# How does the algorithm work?
+# How does it work?
 
 .large[_Key idea:_ use pairwise $\mathbf{x_i}$ and $\mathbf{x_j}$ 
 distances as joint probabilities using a Gaussian kernel
@@ -457,7 +377,7 @@ tsne_view
 class: middle, inverse, center
 
 
-# tSNE is state of the art, but how can we help analysts use it?
+# tSNE is state of the art, but how can we help analysts understand it?
 
 
 ---
@@ -508,7 +428,7 @@ include_graphics("img/bases-generation.png")
 (From _Buja, Cook, Asimov and Hurley, 2004_)
 ---
 
-# We need interactivity
+class: middle
 
 .large[The tour is greatly enhanced by interactivity:
 
@@ -533,22 +453,6 @@ class: inverse, middle, center
 - treats the basis generation/interpolation steps as a reactive stream  
 ]
 
----
-
-# The API and hidden messages
-
-```{r, echo = TRUE, eval = FALSE}
-library(liminal)
-
-data(pollen, package = "animation")
-
-limn_tour(
-  pollen, 
-  cols = dplyr::everything(), # which columns to form X
-  tour_path = tourr::grand_tour() # how to generate the sequence
-)
-```
-
 
 ---
 class: middle, center
@@ -570,7 +474,7 @@ class: middle, center
 
 ---
 
-# Thesis Driven Development
+# Thesis driven development
 
 .large[
 - `liminal` began life as [`sneezy`](https://github.com/sa-lee/sneezy)
@@ -584,7 +488,7 @@ class: middle, center
 
 class: inverse, middle, center
 
-# Casting Multiple Shadows
+# Casting multiple shadows
 
 ---
 
@@ -682,23 +586,8 @@ class: middle, center
 
 ---
 
-# Spatial Linked Brushes
+# Spatial linking
 
-.large[
-**Key idea:** Look-up the $k$-nearest neighbours graph for observations that fall inside a brushing region for a given view. 
-]
-
----
-
----
-# Spatial Linked Brushes
-
-.large[
-**Key idea:** In the secondary view, highlight the corresponding neighbours using colour or transparency. 
-]
-
----
-# Spatial Linked Brushes
 
 .large[
 
@@ -708,14 +597,26 @@ class: middle, center
 
 ]
 
+
+---
+# Spatial linking
+
+.large[
+**Key idea:** Look up nearest neighbours graph
+from points that lie in a brushing region.
+
+Highlight the corresponding neighbours using colour or transparency in the linked view. 
+]
+
+
 ---
 
-# Spatial Linked Brushes
+# Spatial linking
 
 .medium[
 - The $k$ nearest neighbours graph can be pre-computed quickly, for either $X$, $Y$ or both.
-- Instead of using the neighbour indices, we could use the neighbour distances instead
-- Composition of multiple brushes could be used to show where there are matches/mismatches between nearest neighbour graphs 
+- Instead of using the neighbour indices, we could use the neighbour distances instead.
+- Composition of multiple brushes could be used to show where there are matches/mismatches between nearest neighbour graphs. 
 ]
 
 
@@ -733,7 +634,7 @@ class: middle, center
 
 ---
 
-# Thesis Driven Development Part 2
+# Thesis driven development: part 2
 
 .large[
 - adding interactions increases code complexity
@@ -761,10 +662,88 @@ class: middle, center
 
 .large[
 
-* DR oriented workflows are complimented by the tour
+* DR oriented workflows are complemented by the tour
 * Composing multiple views provides more insight 
 * User interactions allow us to explore and check *tSNE* views
 ]
+
+---
+class: inverse, middle, center
+
+# How does this fit in?
+
+---
+class: center, middle
+
+```{r dse, echo = FALSE, out.width="80%"}
+include_graphics("img/data-science.png")
+```
+
+_(Wickham and Wickham, 2017)_
+
+---
+class: center, middle
+
+```{r dse-human, echo = FALSE, out.width="80%"}
+include_graphics("img/data-science-wrangle.png")
+```
+
+---
+class: center, middle
+
+```{r dse-human-me, echo = FALSE, out.width="80%"}
+include_graphics("img/data-science-wrangle.png")
+```
+
+.large[
+👩🏽
+🔬🧬🧬👨🏻
+🔬
+]
+---
+
+```{r plyranges, echo = FALSE, out.width="80%"}
+include_graphics("img/plyranges-paper.png")
+```
+
+```{r plyranges-hex, echo = FALSE, out.width="30%"}
+include_graphics("img/plyranges.png")
+```
+
+---
+
+```{r f1000, echo = FALSE, out.width = "80%"}
+include_graphics("img/f1000.png")
+```
+
+---
+
+```{r superintronic-paper, out.width = "80%"}
+include_graphics("img/superintronic-paper.png")
+```
+
+```{r superintronic-hex, out.width = "30%"}
+include_graphics("img/superintronic.png")
+```
+---
+class: middle, center 
+
+```{r back-to-cycle, echo = FALSE, out.width="80%"}
+include_graphics("img/data-science-wrangle.png")
+```
+.large[
+👩🏽
+🔬🧬🧬👨🏻
+🔬
+]
+
+---
+class: middle, center
+
+```{r me-now, echo = FALSE, out.width="80%"}
+include_graphics("img/data-science-explore.png")
+```
+
 
 ---
 
