@@ -6,7 +6,7 @@ dim(fake_trees)
 ## ----pc-view--------------------------------------------------------
 pcs  <- prcomp(fake_trees[, -ncol(fake_trees)])
 # var explained
-summary(pcs)$importance[3,1:15]
+summary(pcs)$importance[3,1:12]
 
 ## ----pca-xy---------------------------------------------------------
 fake_trees <- dplyr::bind_cols(fake_trees, as.data.frame(pcs$x))
@@ -38,6 +38,7 @@ tsne_v2 <- Rtsne::Rtsne(
   dplyr::select(fake_trees, dplyr::starts_with("dim")),
   Y_init = clamp_sd(as.matrix(dplyr::select(fake_trees, PC1,PC2)), sd = 1e-4),
   perplexity = nrow(fake_trees) / 100,
+  eta = nrow(fake_trees) / 48,
   max_iter = 3000
 )
 
