@@ -662,16 +662,6 @@ Highlight the corresponding neighbours using colour or transparency in the linke
 - Getting the package on CRAN
 ]
 
----
-
-# Take homes
-
-.large[
-
-* DR oriented workflows are complemented by the tour
-* Composing multiple views provides more insight 
-* User interactions allow us to explore and check *tSNE* views
-]
 
 ---
 class: inverse, middle, center
@@ -750,8 +740,18 @@ class: middle, center
 include_graphics("img/data-science-explore.png")
 ```
 
-
 ---
+
+# Take homes
+
+.large[
+
+* DR oriented workflows are complemented by the tour
+* Composing multiple views provides more insight 
+* User interactions allow us to explore and check *tSNE* views
+]
+
+----
 
 # Acknowledgements
 
