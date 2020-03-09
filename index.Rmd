@@ -317,6 +317,8 @@ class: inverse, middle, center
 ---
 
 # Continuous gradients revisited
+ 
+where $n = 500$ and $p = 10$
 
 .center[
 ```{r gradients-revisited, echo = FALSE, out.width="80%"}
@@ -325,6 +327,10 @@ p +
   scale_color_viridis_c()
 ```
 ]
+
+
+
+
 ---
 
 # Now with more t-SNE
