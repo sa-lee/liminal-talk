@@ -1,6 +1,6 @@
 ---
 title: 'Casting Multiple Shadows'
-subtitle: "high-dimensional interactive data visualisation with tours and embeddings"  
+subtitle: "High-Dimensional Interactive Data Visualisation with Tours and Embeddings"  
 author: "<span style = 'font-size: 90%;'>Stuart Lee, Monash University</span>"
 date: "<span style = 'font-size: 90%;'>Pre-submission Seminar<br><br> Tuesday 10th March, 2020 </span> <br><br>"
 output:
@@ -47,23 +47,6 @@ library(htmltools)
 library(liminal)
 ```
 
-```{r helpers, include=FALSE}
-mp4_vid <- function(src){
-  HTML(
-    paste0(
-      '<video autoplay>
-        <source src="', src, '" type="video/mp4">
-      </video>'
-    )
-  )
-}
-
-fig.fullsize <- c(fig.height = 3.5, fig.width = 8, out.width = "150%"
-)
-
-as_table <- function(...) knitr::kable(..., format='html', digits = 3)
-```
-
 
 ---
 
@@ -75,24 +58,6 @@ as_table <- function(...) knitr::kable(..., format='html', digits = 3)
 * Orientation: tours
 * `liminal` package and usage examples
 ]
-
----
-
-
-.pull-left[
-```{r, echo= FALSE, fig.show = "hold", fig.align = "center", out.width="100%", out.height="100%"}
-include_graphics("img/masocko.png")
-```
-.small[Retinal cell map from Macosko et al., 2015]
-]
-
-.pull-right[
-```{r, echo= FALSE, fig.show = "hold", fig.align = "center", out.width="100%", out.height="100%"}
-include_graphics("img/umap-digits.png")
-```
-.small[Screenshot of Tensorflow Embedding Projector]
-]
-
 
 
 ---
@@ -130,7 +95,7 @@ class: middle, center
 # Cluster identification...
 
 ```{r cluster-id, echo = FALSE}
-# taken from Holmes and Ngyuen
+# taken from Holmes and Ngyuen, 2019
 set.seed(98574)
 m <- 500
 d <- 2
@@ -173,6 +138,23 @@ p +
 ```
 
 ---
+class: middle
+
+.pull-left[
+```{r, echo= FALSE, fig.show = "hold", fig.align = "center", out.width="100%", out.height="100%"}
+include_graphics("img/masocko.png")
+```
+.small[Retinal cell map from Macosko et al., 2015]
+]
+
+.pull-right[
+```{r, echo= FALSE, fig.show = "hold", fig.align = "center", out.width="100%", out.height="100%"}
+include_graphics("img/umap-digits.png")
+```
+.small[Screenshot of Tensorflow Embedding Projector]
+]
+
+---
 
 # Dimension synthesis... 
 
@@ -209,7 +191,22 @@ p +
   scale_color_viridis_c()
 ```
 
+---
+class: middle
 
+.pull-left[
+```{r, echo= FALSE, fig.show = "hold", fig.align = "center", out.width="100%", out.height="100%"}
+include_graphics("img/trajectory.png")
+```
+.small[Single cell trajectory and branches from _(Setty et. al, 2016)_]
+]
+
+.pull-right[
+```{r, echo= FALSE, fig.show = "hold", fig.align = "center", out.width="100%", out.height="100%"}
+include_graphics("img/gradients-ecology.jpg")
+```
+.small[Horseshoes in ecology _(Podani and Miklós, 2002)_]
+]
 
 ---
 class: inverse, middle
@@ -436,12 +433,12 @@ include_graphics("img/bases-generation.png")
 
 class: middle
 
-.large[The tour is greatly enhanced by interactivity:
+.large[The tour is enhanced by **interactivity**:
 
 - play/pause the current projection
 - zooming to find 'interesting' points
 - highlighting sets of points
-- linking between multiple views
+- linking multiple views
 ]
 
 ---
