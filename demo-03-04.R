@@ -18,17 +18,13 @@ set.seed(2099)
 tsne <- Rtsne::Rtsne(dplyr::select(fake_trees, dplyr::starts_with("dim")))
 
 tsne_df <- data.frame(tsneX = tsne$Y[,1],
-                      tsneY = tsne$Y[,2],
-                      branches = fake_trees$branches)
+                      tsneY = tsne$Y[,2])
 
-limn_xy(tsne_df, x = tsneX, y = tsneY, color = branches)
-
-# now together
-limn_tour_xylink(
-  dplyr::select(fake_trees, PC1:PC12, branches),
+limn_tour_link(
   tsne_df,
-  x_color = branches,
-  y_color = branches
+  fake_trees, 
+  cols = PC1:PC12,
+  color = branches
 )
 
 
@@ -42,16 +38,10 @@ tsne_v2 <- Rtsne::Rtsne(
   max_iter = 3000
 )
 
-tsne_v2_df <- data.frame(
-  tsneX = tsne_v2$Y[,1], 
-  tsneY = tsne_v2$Y[,2], 
-  branches = fake_trees$branches
-)
-
-limn_tour_xylink(
-  dplyr::select(fake_trees, PC1:PC12, branches),
-  tsne_v2_df,
-  x_color = branches,
-  y_color = branches
+limn_tour_link(
+  tsne_v2,
+  fake_trees, 
+  cols = PC1:PC12,
+  color = branches
 )
 
