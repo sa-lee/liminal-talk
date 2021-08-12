@@ -2,7 +2,7 @@
 title: 'Casting Multiple Shadows'
 subtitle: "High-Dimensional Interactive Data Visualisation with Tours and Embeddings"  
 author: "<span style = 'font-size: 90%;'>Stuart Lee, Monash University</span>"
-date: "<span style = 'font-size: 90%;'>Pre-submission Seminar<br><br> Tuesday 10th March, 2020 </span> <br><br>"
+date: "<span style = 'font-size: 90%;'>JSM 2021<br><br> August, 2021 </span> <br><br>"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -477,13 +477,13 @@ class: middle, center
 
 ---
 
-# Thesis driven development
+# About the package
 
 .large[
-- `liminal` began life as [`sneezy`](https://github.com/sa-lee/sneezy)
-- __desire__ to have interactivity built in from the start
+- __desire__ to have interactivity  with shiny built in from the start
 - __building__ on top of `vegawidget`
-- prototype $\longleftrightarrow$ edge-case $\longleftrightarrow$ re-factor 
+- available on [CRAN](https://cran.r-project.org/web/packages/liminal/index.html)
+- preprint available on [arXiv](https://arxiv.org/abs/2012.06077)
 
 ]
 
@@ -635,17 +635,6 @@ Highlight the corresponding neighbours using colour or transparency in the linke
 
 <!-- --- -->
 
----
-
-# Thesis driven development: part 2
-
-.large[
-- adding interactions increases code complexity
-- __latency:__  round-trips between R and Javascript 
-- __discoverability:__ specifying UI elements at the code level or within the app?
-- __displays:__ appropriate visual encodings for large _n_
-
-]
 
 ---
 
@@ -653,89 +642,10 @@ Highlight the corresponding neighbours using colour or transparency in the linke
 
 .medium[
 - Implementation and testing of spatial brushes
-- Cleaner user controls and interface
 - Scaling up for larger datasets
 - Exploration of other non-linear embedding techniques
-- Getting the package on CRAN
 ]
 
-
----
-class: inverse, middle, center
-
-# How does this fit in?
-
----
-class: center, middle
-
-```{r dse, echo = FALSE, out.width="80%"}
-include_graphics("img/data-science.png")
-```
-
-_(Wickham and Wickham, 2017)_
-
----
-class: center, middle
-
-```{r dse-human, echo = FALSE, out.width="80%"}
-include_graphics("img/data-science-wrangle.png")
-```
-
----
-class: center, middle
-
-```{r dse-human-me, echo = FALSE, out.width="80%"}
-include_graphics("img/data-science-wrangle.png")
-```
-
-.large[
-👩🏽
-🔬🧬🧬👨🏻
-🔬
-]
----
-
-```{r plyranges, echo = FALSE, out.width="80%"}
-include_graphics("img/plyranges-paper.png")
-```
-
-```{r plyranges-hex, echo = FALSE, out.width="30%"}
-include_graphics("img/plyranges.png")
-```
-
----
-
-```{r f1000, echo = FALSE, out.width = "80%"}
-include_graphics("img/f1000.png")
-```
-
----
-
-```{r superintronic-paper, out.width = "80%"}
-include_graphics("img/superintronic-paper.png")
-```
-
-```{r superintronic-hex, out.width = "30%"}
-include_graphics("img/superintronic.png")
-```
----
-class: middle, center 
-
-```{r back-to-cycle, echo = FALSE, out.width="80%"}
-include_graphics("img/data-science-wrangle.png")
-```
-.large[
-👩🏽
-🔬🧬🧬👨🏻
-🔬
-]
-
----
-class: middle, center
-
-```{r me-now, echo = FALSE, out.width="80%"}
-include_graphics("img/data-science-explore.png")
-```
 
 ---
 # Take homes
@@ -787,9 +697,11 @@ include_graphics("img/data-science-explore.png")
 # Learning more
 
 .large[
-`r icon::fa_box_open() ` [liminal](https://github.com/sa-lee/liminal)
+`r icons::fontawesome("box")` [liminal](https://github.com/sa-lee/liminal), [CRAN](https://cran.r-project.org/web/packages/liminal/index.html)
 
-`r icon::fa('link')` [talk link](https://bit.ly/39vj1mF)
+`r icons::fontawesome("paperclip")` [arXiv preprint](https://arxiv.org/abs/2012.06077)
+
+`r icons::fontawesome('link')` [talk link](https://bit.ly/39vj1mF)
 ]
 
 

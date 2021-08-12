@@ -4,7 +4,7 @@
     <title>Casting Multiple Shadows</title>
     <meta charset="utf-8" />
     <meta name="author" content="Stuart Lee, Monash University" />
-    <link href="libs/font-awesome-5.3.1/css/fontawesome-all.min.css" rel="stylesheet" />
+    <script src="libs/header-attrs-2.10/header-attrs.js"></script>
     <link rel="stylesheet" href="saltheme.css" type="text/css" />
     <link rel="stylesheet" href="extra.css" type="text/css" />
     <link rel="stylesheet" href="animate.css" type="text/css" />
@@ -16,7 +16,7 @@ class: left, middle, inverse, title-slide
 # Casting Multiple Shadows
 ## High-Dimensional Interactive Data Visualisation with Tours and Embeddings
 ### <span style="font-size: 90%;">Stuart Lee, Monash University</span>
-### <span style="font-size: 90%;">Pre-submission Seminar<br><br> Tuesday 10th March, 2020 </span> <br><br>
+### <span style="font-size: 90%;">JSM 2021<br><br> August, 2021 </span> <br><br>
 
 ---
 
@@ -357,13 +357,13 @@ class: middle, center
 
 ---
 
-# Thesis driven development
+# About the package
 
 .large[
-- `liminal` began life as [`sneezy`](https://github.com/sa-lee/sneezy)
-- __desire__ to have interactivity built in from the start
+- __desire__ to have interactivity  with shiny built in from the start
 - __building__ on top of `vegawidget`
-- prototype `\(\longleftrightarrow\)` edge-case `\(\longleftrightarrow\)` re-factor 
+- available on [CRAN](https://cran.r-project.org/web/packages/liminal/index.html)
+- preprint available on [arXiv](https://arxiv.org/abs/2012.06077)
 
 ]
 
@@ -512,17 +512,6 @@ Highlight the corresponding neighbours using colour or transparency in the linke
 
 &lt;!-- --- --&gt;
 
----
-
-# Thesis driven development: part 2
-
-.large[
-- adding interactions increases code complexity
-- __latency:__  round-trips between R and Javascript 
-- __discoverability:__ specifying UI elements at the code level or within the app?
-- __displays:__ appropriate visual encodings for large _n_
-
-]
 
 ---
 
@@ -530,69 +519,10 @@ Highlight the corresponding neighbours using colour or transparency in the linke
 
 .medium[
 - Implementation and testing of spatial brushes
-- Cleaner user controls and interface
 - Scaling up for larger datasets
 - Exploration of other non-linear embedding techniques
-- Getting the package on CRAN
 ]
 
-
----
-class: inverse, middle, center
-
-# How does this fit in?
-
----
-class: center, middle
-
-&lt;img src="img/data-science.png" width="80%" style="display: block; margin: auto;" /&gt;
-
-_(Wickham and Wickham, 2017)_
-
----
-class: center, middle
-
-&lt;img src="img/data-science-wrangle.png" width="80%" style="display: block; margin: auto;" /&gt;
-
----
-class: center, middle
-
-&lt;img src="img/data-science-wrangle.png" width="80%" style="display: block; margin: auto;" /&gt;
-
-.large[
-👩🏽
-🔬🧬🧬👨🏻
-🔬
-]
----
-
-&lt;img src="img/plyranges-paper.png" width="80%" style="display: block; margin: auto;" /&gt;
-
-&lt;img src="img/plyranges.png" width="30%" style="display: block; margin: auto;" /&gt;
-
----
-
-&lt;img src="img/f1000.png" width="80%" style="display: block; margin: auto;" /&gt;
-
----
-
-&lt;img src="img/superintronic-paper.png" width="80%" style="display: block; margin: auto;" /&gt;
-
-&lt;img src="img/superintronic.png" width="30%" style="display: block; margin: auto;" /&gt;
----
-class: middle, center 
-
-&lt;img src="img/data-science-wrangle.png" width="80%" style="display: block; margin: auto;" /&gt;
-.large[
-👩🏽
-🔬🧬🧬👨🏻
-🔬
-]
-
----
-class: middle, center
-
-&lt;img src="img/data-science-explore.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 # Take homes
@@ -644,9 +574,11 @@ class: middle, center
 # Learning more
 
 .large[
-<i class="fas  fa-box-open "></i> [liminal](https://github.com/sa-lee/liminal)
+&lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M509.5 184.6L458.9 32.8C452.4 13.2 434.1 0 413.4 0H272v192h238.7c-.4-2.5-.4-5-1.2-7.4zM240 0H98.6c-20.7 0-39 13.2-45.5 32.8L2.5 184.6c-.8 2.4-.8 4.9-1.2 7.4H240V0zM0 224v240c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V224H0z"&gt;&lt;/path&gt;&lt;/svg&gt; [liminal](https://github.com/sa-lee/liminal), [CRAN](https://cran.r-project.org/web/packages/liminal/index.html)
 
-<i class="fas  fa-link "></i> [talk link](https://bit.ly/39vj1mF)
+&lt;svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M43.246 466.142c-58.43-60.289-57.341-157.511 1.386-217.581L254.392 34c44.316-45.332 116.351-45.336 160.671 0 43.89 44.894 43.943 117.329 0 162.276L232.214 383.128c-29.855 30.537-78.633 30.111-107.982-.998-28.275-29.97-27.368-77.473 1.452-106.953l143.743-146.835c6.182-6.314 16.312-6.422 22.626-.241l22.861 22.379c6.315 6.182 6.422 16.312.241 22.626L171.427 319.927c-4.932 5.045-5.236 13.428-.648 18.292 4.372 4.634 11.245 4.711 15.688.165l182.849-186.851c19.613-20.062 19.613-52.725-.011-72.798-19.189-19.627-49.957-19.637-69.154 0L90.39 293.295c-34.763 35.56-35.299 93.12-1.191 128.313 34.01 35.093 88.985 35.137 123.058.286l172.06-175.999c6.177-6.319 16.307-6.433 22.626-.256l22.877 22.364c6.319 6.177 6.434 16.307.256 22.626l-172.06 175.998c-59.576 60.938-155.943 60.216-214.77-.485z"&gt;&lt;/path&gt;&lt;/svg&gt; [arXiv preprint](https://arxiv.org/abs/2012.06077)
+
+&lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"&gt;&lt;/path&gt;&lt;/svg&gt; [talk link](https://bit.ly/39vj1mF)
 ]
 
 
@@ -703,6 +635,32 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
@@ -720,17 +678,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   }
   preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
 })(document);</script>
-
-<script>
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-</script>
 
 <script>
 slideshow._releaseMath = function(el) {
